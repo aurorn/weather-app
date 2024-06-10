@@ -61,7 +61,7 @@ const App = () => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - ref.current.offsetLeft;
-      const walk = (x - startX) * 3; //scroll-fast
+      const walk = (x - startX) * 1;
       ref.current.scrollLeft = scrollLeft - walk;
     });
   };
@@ -82,6 +82,7 @@ const App = () => {
             icon={currentWeather.condition.icon}
             condition={currentWeather.condition.text}
           />
+
         )}
         </div>
         <div className="hourly-forecast-container">
