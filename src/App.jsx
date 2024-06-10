@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import CurrentWeather from './components/CurrentWeather';
 import HourlyForecast from './components/HourlyForecast';
@@ -12,6 +12,8 @@ const App = () => {
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [dailyForecast, setDailyForecast] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
+  const hourlyRef = useRef(null);
+  const dailyRef = useRef(null);
 
   useEffect(() => {
     const getWeather = async () => {
@@ -33,10 +35,47 @@ const App = () => {
     setLocation(newLocation);
   };
 
+  const addDragScroll = (ref) => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    ref.current.addEventListener('mousedown', (e) => {
+      isDown = true;
+      ref.current.classList.add('active');
+      startX = e.pageX - ref.current.offsetLeft;
+      scrollLeft = ref.current.scrollLeft;
+    });
+
+    ref.current.addEventListener('mouseleave', () => {
+      isDown = false;
+      ref.current.classList.remove('active');
+    });
+
+    ref.current.addEventListener('mouseup', () => {
+      isDown = false;
+      ref.current.classList.remove('active');
+    });
+
+    ref.current.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - ref.current.offsetLeft;
+      const walk = (x - startX) * 3; //scroll-fast
+      ref.current.scrollLeft = scrollLeft - walk;
+    });
+  };
+
+  useEffect(() => {
+    addDragScroll(hourlyRef);
+    addDragScroll(dailyRef);
+  }, []);
+
   return (
     <div className="app">
       <Header onSearch={handleSearch} />
       <div className="main-content">
+        <div className="current-weather">
         {currentWeather && (
           <CurrentWeather
             temperature={currentWeather.temp_c}
@@ -44,14 +83,25 @@ const App = () => {
             condition={currentWeather.condition.text}
           />
         )}
-        <HourlyForecast forecast={hourlyForecast} />
-        <div className="weather-type-icon">
-          {currentWeather && (
-            <img src={currentWeather.condition.icon} alt="Weather Icon" />
-          )}
+        </div>
+        <div className="hourly-forecast-container">
+          <div className="hourly-forecast" ref={hourlyRef}>
+            <HourlyForecast forecast={hourlyForecast} />
+          </div>
+        </div>
+        <div className="location-info">
+            <h2>{location}</h2>
         </div>
       </div>
-      <DailyForecast forecast={dailyForecast} onDaySelect={handleDaySelect} />
+      <div className="daily-forecast-container">
+        <div className="daily-forecast" ref={dailyRef}>
+          <DailyForecast 
+            forecast={dailyForecast} 
+            onDaySelect={handleDaySelect} 
+            location={location} 
+          />
+        </div>
+      </div>
       {selectedDay && (
         <div className="selected-day">
           <h2>{new Date(selectedDay.date).toDateString()}</h2>

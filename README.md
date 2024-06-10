@@ -2,3 +2,5 @@
 
 Tools installed:
 webpack, eslint, babel, prettier, react
+
+Weather App - Using weatherapi
