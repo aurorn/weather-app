@@ -1,4 +1,4 @@
-const API_KEY = '09759ee6939c4f5cbd9190341240606';
+const API_KEY = '-';
 const BASE_URL = 'https://api.weatherapi.com/v1';
 
 export const fetchCurrentWeather = async (location) => {
