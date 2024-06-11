@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, FormControl } from 'react-bootstrap';
 
 const Header = ({ onSearch }) => {
   const [location, setLocation] = useState('');
@@ -11,15 +12,19 @@ const Header = ({ onSearch }) => {
 
   return (
     <header className="header">
-      <h1>Weather App</h1>
-      <div className="search-container">
-        <input
+      <img src="/path/to/logo.png" alt="Logo" />
+      <Form className="search-container">
+        <FormControl
           type="text"
-          placeholder="Search"
+          placeholder="London"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           onKeyPress={handleKeyPress}
         />
+      </Form>
+      <div className="unit-buttons">
+        <button className="btn btn-light">°C, km/h</button>
+        <button className="btn btn-light">°F, mph</button>
       </div>
     </header>
   );
