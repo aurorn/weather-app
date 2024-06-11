@@ -61,7 +61,7 @@ const App = () => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - ref.current.offsetLeft;
-      const walk = (x - startX) * 1;
+      const walk = (x - startX) * 1; 
       ref.current.scrollLeft = scrollLeft - walk;
     });
   };
@@ -75,23 +75,20 @@ const App = () => {
     <div className="app">
       <Header onSearch={handleSearch} />
       <div className="main-content">
-        <div className="current-weather">
         {currentWeather && (
           <CurrentWeather
             temperature={currentWeather.temp_c}
             icon={currentWeather.condition.icon}
             condition={currentWeather.condition.text}
           />
-
         )}
-        </div>
         <div className="hourly-forecast-container">
           <div className="hourly-forecast" ref={hourlyRef}>
             <HourlyForecast forecast={hourlyForecast} />
           </div>
         </div>
         <div className="location-info">
-            <h2>{location}</h2>
+          <h2>{location}</h2>
         </div>
       </div>
       <div className="daily-forecast-container">
