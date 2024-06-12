@@ -4,7 +4,7 @@ import { Form, FormControl } from 'react-bootstrap';
 const Header = ({ onSearch }) => {
   const [location, setLocation] = useState('');
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = event => {
     if (event.key === 'Enter') {
       onSearch(location);
     }
@@ -16,9 +16,9 @@ const Header = ({ onSearch }) => {
       <Form className="search-container">
         <FormControl
           type="text"
-          placeholder="London"
+          placeholder="City or Zip"
           value={location}
-          onChange={(e) => setLocation(e.target.value)}
+          onChange={e => setLocation(e.target.value)}
           onKeyPress={handleKeyPress}
         />
       </Form>

@@ -11,14 +11,16 @@ body {
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 20px;
-  width: 100%;
+  
 }
 
 .header img {
+  display: flex;
+  align-items: center;
   height: 40px;
 }
 
@@ -45,12 +47,12 @@ body {
 }
 
 .unit-buttons button {
-  padding: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 12px;
   border: none;
   background: white;
   color: black;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .main-content {
