@@ -206,6 +206,9 @@ const App = () => {
           />
         </div>
       </div>
+      <footer className="footer">
+        Made by Aurorn
+      </footer>
     </div>
   );
 };
