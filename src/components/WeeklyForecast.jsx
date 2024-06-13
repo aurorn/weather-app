@@ -2,7 +2,7 @@ import React from 'react';
 
 const WeeklyForecast = ({ forecast }) => (
   <div className="weekly-forecast">
-    {forecast.slice(0, 7).map((day, index) => (
+    {forecast.slice(1, 8).map((day, index) => (
       <div key={index} className="day">
         <p>{new Date(day.date).toLocaleDateString()}</p>
         <img src={day.day.condition.icon} alt="Weather Icon" />

@@ -20,7 +20,11 @@ const App = () => {
       }
 
       const forecastData = await fetchForecast(location);
-      if (forecastData && forecastData.forecast && forecastData.forecast.forecastday) {
+      if (
+        forecastData &&
+        forecastData.forecast &&
+        forecastData.forecast.forecastday
+      ) {
         setWeeklyForecast(forecastData.forecast.forecastday);
       } else {
         setWeeklyForecast([]);
@@ -30,7 +34,7 @@ const App = () => {
     getWeather();
   }, [location]);
 
-  const handleSearch = (newLocation) => {
+  const handleSearch = newLocation => {
     setLocation(newLocation);
   };
 
@@ -39,25 +43,27 @@ const App = () => {
       <Header onSearch={handleSearch} />
       <div className="main-content">
         {currentWeather && (
-          <div className="current-weather">
+          <div className="current-weather-container">
+            <div className="location-info">
+              <h2>{location}</h2>
+              <p>{new Date().toLocaleString()}</p>
+            </div>
             <div className="current-weather-info">
               <CurrentWeather
                 temperature={currentWeather.temp_c}
                 icon={currentWeather.condition.icon}
                 condition={currentWeather.condition.text}
               />
+            </div>
+            <div className="more-weather-info">
               <p>Feels like: {currentWeather.feelslike_c}°C</p>
               <p>Wind: {currentWeather.wind_kph} km/h</p>
               <p>Humidity: {currentWeather.humidity}%</p>
               <p>UV index: {currentWeather.uv}</p>
-            </div>
-            <div className="location-info">
-              <h2>{location}</h2>
-              <p>{new Date().toLocaleString()}</p>
-            </div>
+              </div>
           </div>
         )}
-        <div className="weekly-forecast">
+        <div className="weekly-forecast-container">
           <h2>Weekly Forecast</h2>
           <WeeklyForecast forecast={weeklyForecast} />
         </div>

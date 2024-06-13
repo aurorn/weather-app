@@ -14,8 +14,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  padding: 20px;
-  
+  margin: 20px 40px 30px;
+  width: calc(100vw - 80px);
 }
 
 .header img {
@@ -59,57 +59,70 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  
 }
 
 .current-weather {
   display: flex;
-  justify-content: space-between;
+  text-align: right;
+  flex-direction: row-reverse;
   align-items: center;
-  padding: 20px;
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  position: relative;
+  gap: 5px;
+}
+
+.current-weather-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 60%;
+}
+
+.location-info {
+  text-align: left;
+  grid-area: 1 / 1 / 2 / 2;
 }
 
 .current-weather img {
   width: 100px;
-  height: 100px;
+  height: auto;
 }
 
 .current-weather-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  grid-area: 1 / 2 / 2 / 3;
+  text-align: right;
 }
 
 .current-weather-info p {
   margin: 5px 0;
 }
 
-.location-info {
-  margin-top: 10px;
-  text-align: right;
+.more-weather-info {
+  grid-area: 2 / 1 / 3 / 3;
+}
+
+.weekly-forecast-container {
+  text-align: center;
+  width: 60%;
 }
 
 .weekly-forecast {
   padding: 20px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  
 }
 
 .weekly-forecast h2 {
   text-align: center;
 }
 
-.weekly-forecast .day {
-  display: flex;
-  justify-content: space-between;
+.day {
+  padding: 0 5px 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
-  padding: 10px;
+  text-align: center;
+  border-bottom: white solid 1px;
 }
 
 .weekly-forecast .day p {
