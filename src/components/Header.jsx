@@ -4,12 +4,12 @@ import { Form, FormControl, Button } from 'react-bootstrap';
 const Header = ({ onSearch, onUnitChange, unit }) => {
   const [location, setLocation] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     onSearch(location);
   };
 
-  const onChange = (event) => {
+  const onChange = event => {
     setLocation(event.target.value);
   };
 

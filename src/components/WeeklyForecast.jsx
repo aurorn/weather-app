@@ -1,7 +1,12 @@
 import React from 'react';
 
-const formatDate = (dateString) => {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const formatDate = dateString => {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('en-GB', options).format(date);
 };
