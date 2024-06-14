@@ -72,7 +72,7 @@ body {
   align-items: center;
   gap: 5px;
   margin-right: 40%;
-  font-size: 32px;
+  font-size: 1.5vw;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -90,9 +90,8 @@ body {
 
 .location-info {
   text-align: left;
-  grid-area: 1 / 1 / 2 / 2;
   margin-left: 40%;
-  font-size: 32px;
+  font-size: 1.5vw;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -177,3 +176,66 @@ body {
   left: 0;
 }
 
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    margin: 10px 20px;
+    width: auto;
+    text-align: center;
+  }
+
+  .header img {
+    justify-self: center;
+    margin-bottom: 10px;
+  }
+
+  .header .search-container {
+    margin: 10px 0;
+  }
+
+  .unit-buttons {
+    justify-content: center;
+  }
+
+  .current-weather-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .current-weather-info {
+    text-align: center;
+
+  }
+
+  .current-weather {
+    text-align: center;
+    margin-right: 0%;
+    font-size: 3vw;
+  }
+
+  .location-info {
+    text-align: center;
+    margin-left: 0%;
+    font-size: 3vw;
+  }
+
+  .weekly-forecast-container {
+    width: 90%;
+  }
+
+  .day {
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  .day p, .day img {
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .more-weather-info {
+    width: auto;
+  }
+}
